@@ -18,6 +18,7 @@ engine.setProperty('rate', 150)  # গলার স্বর পরিষ্ক�
 # video source
 cap = cv2.VideoCapture("test_video.mp4")
 
+
 last_spoken_time = 0 
 last_spoken_label = ""
 
