@@ -1,11 +1,11 @@
 # voice control and updated
 
 
-
 import cv2
 from ultralytics import YOLO
 import pyttsx3
 import time
+
 
 # YOLO model load
 model = YOLO("yolov8n.pt")
