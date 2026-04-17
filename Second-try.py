@@ -13,7 +13,7 @@ model = YOLO("yolov8n.pt")
 
 # voice engine setup
 engine = pyttsx3.init()
-engine.setProperty('rate', 150)  # গলার স্বর পরিষ্কার করার জন্য স্পিড কমানো হয়েছে
+engine.setProperty('rate', 150)  # গলার স্বর পরিষ্কার করার জন্য স্পিড কমানো হয়েছে (for clearing the voice or vocal cord)
 
 # video source
 cap = cv2.VideoCapture("test_video.mp4")
