@@ -56,11 +56,11 @@ while cap.isOpened():
             cv2.rectangle(frame, (x1, y1), (x2, y2), (0, 255, 0), 2)
             cv2.putText(frame, label, (x1, y1 - 10), 
                         cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 255, 0), 2)
-                        
+
 
     cv2.imshow("Third Eye", frame)
 
-    if cv2.waitKey(1) & 0xFF == ord('q'): # 'q' চেপে বন্ধ করা যাবে
+    if cv2.waitKey(1) & 0xFF == ord('q'): #press q for stop
         break
 
 cap.release()
