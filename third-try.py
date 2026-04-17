@@ -1,0 +1,152 @@
+#voice repeat after 5 sec
+
+# import cv2
+# from ultralytics import YOLO
+# import pyttsx3
+# import time
+
+# # YOLO model load
+# model = YOLO("yolov8n.pt")
+
+# # voice engine setup
+# engine = pyttsx3.init()
+# engine.setProperty('rate', 110)  # কথা বোঝার জন্য স্পিড আরও একটু কমানো হয়েছে
+# engine.setProperty('volume', 1.0)
+
+# # video source
+# cap = cv2.VideoCapture("test_video.mp4")
+
+# last_spoken_time = 0  # শেষ কখন কথা বলেছিল তার হিসাব রাখার জন্য
+
+# while cap.isOpened():
+#     ret, frame = cap.read()
+#     if not ret:
+#         break
+
+#     # অবজেক্ট ডিটেকশন
+#     results = model(frame)
+    
+#     detected_objects = []
+
+#     for r in results:
+#         boxes = r.boxes
+#         for box in boxes:
+#             cls_id = int(box.cls[0])
+#             label = model.names[cls_id]
+#             detected_objects.append(label)
+
+#             # bounding box draw
+#             x1, y1, x2, y2 = map(int, box.xyxy[0])
+#             cv2.rectangle(frame, (x1, y1), (x2, y2), (0, 255, 0), 2)
+#             cv2.putText(frame, label, (x1, y1 - 10), 
+#                         cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 255, 0), 2)
+
+#     # ৫ সেকেন্ড টাইমার লজিক
+#     current_time = time.time()
+#     if current_time - last_spoken_time > 3:  # যদি ৫ সেকেন্ড পার হয়ে যায়
+#         if detected_objects:
+#             # ইউনিক অবজেক্টগুলো নিয়ে একটি লিস্ট তৈরি (যাতে একই কথা বারবার না বলে)
+#             unique_objects = list(set(detected_objects))
+            
+#             # কথা সাজানো: "I see a person and a car"
+#             if len(unique_objects) > 1:
+#                 obj_text = ", ".join(unique_objects[:-1]) + " and " + unique_objects[-1]
+#             else:
+#                 obj_text = unique_objects[0]
+                
+#             speech_text = f"I see {obj_text}"
+#             print(f"Speaking: {speech_text}")
+            
+#             engine.say(speech_text)
+#             engine.runAndWait()
+            
+#             last_spoken_time = current_time  # টাইম আপডেট করা হলো
+
+#     cv2.imshow("Third Eye - 5 Sec Interval", frame)
+
+#     if cv2.waitKey(1) & 0xFF == ord('q'):
+#         break
+
+# cap.release()
+# cv2.destroyAllWindows()
+
+
+
+
+
+import cv2
+from ultralytics import YOLO
+import pyttsx3
+import time
+
+# YOLO model load
+model = YOLO("yolov8n.pt")
+
+# voice engine setup
+engine = pyttsx3.init()
+engine.setProperty('rate', 140) 
+engine.setProperty('volume', 1.0)
+
+# video source
+cap = cv2.VideoCapture("test_video.mp4")
+
+last_spoken_time = 0 
+speech_text = "" # কি বলা হচ্ছে তা জমা রাখার জন্য
+
+while cap.isOpened():
+    ret, frame = cap.read()
+    if not ret:
+        break
+
+    # অবজেক্ট ডিটেকশন
+    results = model(frame)
+    detected_objects = []
+
+    for r in results:
+        boxes = r.boxes
+        for box in boxes:
+            cls_id = int(box.cls[0])
+            label = model.names[cls_id]
+            detected_objects.append(label)
+
+            # bounding box draw
+            x1, y1, x2, y2 = map(int, box.xyxy[0])
+            cv2.rectangle(frame, (x1, y1), (x2, y2), (0, 255, 0), 2)
+            cv2.putText(frame, label, (x1, y1 - 10), 
+                        cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 255, 0), 2)
+
+    # ৫ সেকেন্ড টাইমার লজিক
+    current_time = time.time()
+    
+    if current_time - last_spoken_time > 5:
+        if detected_objects:
+            unique_objects = list(set(detected_objects))
+            
+            if len(unique_objects) > 1:
+                obj_text = ", ".join(unique_objects[:-1]) + " and " + unique_objects[-1]
+            else:
+                obj_text = unique_objects[0]
+                
+            speech_text = f"I see {obj_text}"
+            
+            # ১. টার্মিনালে প্রিন্ট করবে
+            print(f"--- [VOICE]: {speech_text} ---")
+            
+            # ২. স্পিকারে কথা বলবে
+            engine.say(speech_text)
+            engine.runAndWait()
+            
+            last_spoken_time = current_time
+
+    # ৩. ভিডিও স্ক্রিনের উপর লেখাটি দেখাবে (Overlay Text)
+    if speech_text:
+        cv2.putText(frame, f"AI Voice: {speech_text}", (20, 50), 
+                    cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 0, 255), 2)
+
+    cv2.imshow("Third Eye - Object Detection", frame)
+
+    if cv2.waitKey(1) & 0xFF == ord('q'):
+        break
+
+cap.release()
+cv2.destroyAllWindows()
