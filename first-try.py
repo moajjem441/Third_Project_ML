@@ -2,6 +2,7 @@ import cv2
 from ultralytics import YOLO
 import pyttsx3
 
+
 # YOLO model load (first time download hobe)
 model = YOLO("yolov8n.pt")
 
