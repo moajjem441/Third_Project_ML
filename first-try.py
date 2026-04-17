@@ -16,6 +16,7 @@ cap = cv2.VideoCapture("test_video.mp4")
 
 last_spoken = ""
 
+
 while True:
     ret, frame = cap.read()
     if not ret:
