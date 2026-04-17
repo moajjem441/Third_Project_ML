@@ -39,7 +39,7 @@ while cap.isOpened():
             # present time check
             current_time = time.time()
 
-            # যদি নতুন অবজেক্ট হয় অথবা একই অবজেক্ট ৩ সেকেন্ড পর আবার বলতে চায়
+         
             if label != last_spoken_label or (current_time - last_spoken_time > 3):
                 text = f"I see a {label}"
                 print(text)
