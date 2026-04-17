@@ -6,6 +6,7 @@ import pyttsx3
 # YOLO model load (first time download hobe)
 model = YOLO("yolov8n.pt")
 
+
 # voice engine
 engine = pyttsx3.init()
 
