@@ -10,6 +10,7 @@ model = YOLO("yolov8n.pt")
 # voice engine
 engine = pyttsx3.init()
 
+
 # video file (tomar video path dao)
 cap = cv2.VideoCapture("test_video.mp4")
 
