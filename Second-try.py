@@ -36,7 +36,7 @@ while cap.isOpened():
             cls_id = int(box.cls[0])
             label = model.names[cls_id]
 
-            # বর্তমান সময় চেক করা
+            # present time check
             current_time = time.time()
 
             # যদি নতুন অবজেক্ট হয় অথবা একই অবজেক্ট ৩ সেকেন্ড পর আবার বলতে চায়
