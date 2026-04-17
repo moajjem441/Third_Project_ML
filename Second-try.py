@@ -49,6 +49,7 @@ while cap.isOpened():
                 
                 last_spoken_label = label
                 last_spoken_time = current_time
+                
 
             # Draw
             x1, y1, x2, y2 = map(int, box.xyxy[0])
