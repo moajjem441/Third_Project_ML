@@ -50,10 +50,11 @@ while cap.isOpened():
                 current_actions.append(action)
                 
                 # কঙ্কালের মতো পোজ ড্র করবে (এটি দেখতে খুব কুল লাগে!)
-                
+
                 frame = r.plot() 
 
     # ৫ সেকেন্ড পরপর ভয়েস আপডেট
+    
     current_time = time.time()
     if current_time - last_spoken_time > 5 and current_actions:
         unique_action = list(set(current_actions))[0]
