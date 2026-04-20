@@ -5,7 +5,7 @@ from ultralytics import YOLO
 import pyttsx3
 import time
 
-# YOLO Pose model (এটি মানুষের হাড়ের জয়েন্ট ট্র্যাক করে)
+# YOLO Pose model  (এটি মানুষের হাড়ের জয়েন্ট ট্র্যাক করে)
 model = YOLO("yolov8n-pose.pt")
 
 engine = pyttsx3.init()
