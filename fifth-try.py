@@ -38,9 +38,9 @@ while cap.isOpened():
                 x1, y1, x2, y2 = map(int, r.boxes.xyxy[0])
                 w = x2 - x1
                 h = y2 - y1
-                
 
-                # পোজ অনুযায়ী উন্নত লজিক
+
+                #  পোজ অনুযায়ী উন্নত লজিক
                 if h > w * 1.2:
                     action = "walking"
                 else:
