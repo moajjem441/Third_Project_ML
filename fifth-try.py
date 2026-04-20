@@ -19,6 +19,7 @@ while cap.isOpened():
     if not ret:
         break
 
+    
     # Pose Detection
     results = model(frame, conf=0.5)
     current_actions = []
