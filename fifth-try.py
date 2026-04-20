@@ -41,6 +41,7 @@ while cap.isOpened():
 
 
                 #  পোজ অনুযায়ী উন্নত লজিক
+                
                 if h > w * 1.2:
                     action = "walking"
                 else:
