@@ -31,6 +31,7 @@ while cap.isOpened():
             keypoints = r.keypoints.data.cpu().numpy()
             
             for person_keypoints in keypoints:
+                
                 # পায়ের গোড়ালির (Ankle) মুভমেন্ট বা পজিশন চেক করা যায়
                 # তবে সহজ করার জন্য আমরা এখনো বক্স রেশিও এবং পোজ এর সমন্বয় করছি
                 x1, y1, x2, y2 = map(int, r.boxes.xyxy[0])
