@@ -54,7 +54,7 @@ while cap.isOpened():
                 frame = r.plot() 
 
     # ৫ সেকেন্ড পরপর ভয়েস আপডেট
-    
+
     current_time = time.time()
     if current_time - last_spoken_time > 5 and current_actions:
         unique_action = list(set(current_actions))[0]
@@ -64,6 +64,7 @@ while cap.isOpened():
         engine.say(speech_text)
         engine.runAndWait()
         last_spoken_time = current_time
+        
 
     cv2.imshow("Third Eye - Pose Action", frame)
 
