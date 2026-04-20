@@ -6,7 +6,7 @@ import pyttsx3
 import time
 
 
-# YOLO Pose model load
+# YOLO Pose model  load
 model = YOLO("yolov8n-pose.pt")
 
 # Voice engine setup
