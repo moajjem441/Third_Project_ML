@@ -23,6 +23,7 @@ while cap.isOpened():
     # Pose Detection
     results = model(frame, conf=0.5)
     current_actions = []
+    
 
     for r in results:
         # Keypoints (শরীরের জয়েন্টগুলো)
