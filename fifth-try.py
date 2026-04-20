@@ -41,7 +41,7 @@ while cap.isOpened():
 
 
                 #  পোজ অনুযায়ী উন্নত লজিক
-                
+
                 if h > w * 1.2:
                     action = "walking"
                 else:
@@ -50,6 +50,7 @@ while cap.isOpened():
                 current_actions.append(action)
                 
                 # কঙ্কালের মতো পোজ ড্র করবে (এটি দেখতে খুব কুল লাগে!)
+                
                 frame = r.plot() 
 
     # ৫ সেকেন্ড পরপর ভয়েস আপডেট
