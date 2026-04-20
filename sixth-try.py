@@ -15,7 +15,7 @@ engine.setProperty('rate', 150)
 
 cap = cv2.VideoCapture("test_video.mp4")
 
-# শেষবার কথা বলার সময় রেকর্ড রাখা
+# save the record of last talks
 last_spoken_time = time.time() 
 
 while cap.isOpened():
